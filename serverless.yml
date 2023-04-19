@@ -1,11 +1,11 @@
-service: my-aws-store-app
+service: my-store-app-aws
 
 frameworkVersion: "3"
 
 provider:
   name: aws
   runtime: nodejs14.x
-  region: eu-west-1
+  region: us-west-1
   # setup profile for AWS CLI.
   # profile: node-aws
 
@@ -19,7 +19,7 @@ plugins:
 
 custom:
   client:
-    bucketName: my-aws-store-app
+    bucketName: my-store-app-aws
     distributionFolder: dist
   s3BucketName: ${self:custom.client.bucketName}
 
