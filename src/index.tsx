@@ -1,3 +1,4 @@
+import axios from "axios";
 import React from "react";
 import { createRoot } from "react-dom/client";
 import App from "~/components/App/App";
@@ -18,6 +19,30 @@ if (import.meta.env.DEV) {
   const { worker } = await import("./mocks/browser");
   worker.start({ onUnhandledRequest: "bypass" });
 }
+
+axios.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    const status = error.response.status;
+
+    switch (status) {
+      case 401:
+      case 403: {
+        alert(error.response.data?.message);
+        return;
+      }
+      case 400: {
+        alert(error.response.data?.data);
+        return;
+      }
+      default: {
+        console.error(error.response);
+      }
+    }
+
+    return Promise.reject(error.response);
+  }
+);
 
 const container = document.getElementById("app");
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
