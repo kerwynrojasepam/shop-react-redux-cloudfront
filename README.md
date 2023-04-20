@@ -1,5 +1,7 @@
 # React-shop-cloudfront
 
+localStorage `authorization_token` should be set (github_username=TEST_PASSWORD), TEST_PASSWORD is constant.
+
 [FE Repo](https://github.com/kerwynrojasepam/shop-react-redux-cloudfront)
 
 [BE Repo](https://github.com/kerwynrojasepam/aws-practitioner-js-node)
